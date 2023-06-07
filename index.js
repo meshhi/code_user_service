@@ -12,7 +12,7 @@ class UserService {
         return this.password;
       }
 
-authenticateUser() {
+      authenticateUser() {
         return new Promise((resolve, reject) => {
           const xhr = new XMLHttpRequest();
           xhr.open('GET', `https://examples.com/api/user/authenticate?${this.getUsername()}&password=${this.#getPassword()}`);
@@ -30,18 +30,18 @@ authenticateUser() {
           });
         });
       }
-    }
+}
     
-    $('form #login').click((event) =>
-    event.preventDefault();
-        const username = $('#username');
-        const password = $('#password');
-  
-        const userService = new UserService(username.val(), password.val());
-        const authResponse = userService.authenticateUser();
-        authResponse
-          .then((res) => {
+$('form #login').click((event) =>
+      event.preventDefault();
+      const username = $('#username');
+      const password = $('#password');
+
+      const userService = new UserService(username.val(), password.val());
+      const authResponse = userService.authenticateUser();
+      authResponse
+        .then((res) => {
             document.location.href = `/home`;
-          })
-          .catch((err) => console.error(err));
-    });
+        })
+        .catch((err) => console.error(err));
+});
